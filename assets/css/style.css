@@ -1,0 +1,132 @@
+/* =====================================================
+   EduLMS Custom Styles
+===================================================== */
+:root {
+  --primary: #4338ca;
+  --primary-dark: #3730a3;
+  --accent: #06b6d4;
+  --bg-soft: #f4f5fb;
+  --text-dark: #1f2937;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+}
+
+body {
+  background-color: var(--bg-soft);
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  color: var(--text-dark);
+}
+
+.app-navbar {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.app-footer {
+  background: #fff;
+  color: #6b7280;
+  font-size: 0.9rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+
+.stat-card {
+  border-radius: 16px;
+  padding: 1.4rem;
+  color: #fff;
+}
+.stat-card.bg-purple { background: linear-gradient(135deg, #6366f1, #4338ca); }
+.stat-card.bg-cyan { background: linear-gradient(135deg, #22d3ee, #0891b2); }
+.stat-card.bg-green { background: linear-gradient(135deg, #4ade80, #16a34a); }
+.stat-card.bg-orange { background: linear-gradient(135deg, #fb923c, #d97706); }
+
+.stat-card h2 { font-weight: 700; margin-bottom: 0; }
+.stat-card p { opacity: 0.9; margin-bottom: 0.2rem; }
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+/* Auth pages */
+.auth-wrapper {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-card {
+  max-width: 440px;
+  width: 100%;
+  padding: 2.2rem;
+  border-radius: 16px;
+}
+.auth-card .bi {
+  font-size: 2.5rem;
+  color: var(--primary);
+}
+
+/* Tables */
+.table-responsive {
+  border-radius: 12px;
+  overflow: hidden;
+}
+thead.table-dark th {
+  background-color: var(--primary-dark);
+}
+
+/* Course thumbnail */
+.course-thumb {
+  height: 150px;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+}
+
+/* Badges */
+.badge-role-admin { background-color: #7c3aed; }
+.badge-role-lecturer { background-color: #0891b2; }
+.badge-role-student { background-color: #16a34a; }
+
+/* Quiz option */
+.quiz-option {
+  display: block;
+  padding: 0.7rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+}
+.quiz-option:hover {
+  background-color: #eef2ff;
+  border-color: var(--primary);
+}
+
+/* Progress bar */
+.progress {
+  height: 10px;
+  border-radius: 10px;
+}
+
+/* Sidebar (optional layout) */
+.section-title {
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+}
