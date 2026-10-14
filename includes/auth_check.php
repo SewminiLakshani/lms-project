@@ -1,10 +1,4 @@
 <?php
-// =====================================================
-// Session Auth Guard
-// Include at the TOP of every protected page:
-// require_once '../includes/auth_check.php';
-// checkRole('admin');  // or 'lecturer' or 'student'
-// =====================================================
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

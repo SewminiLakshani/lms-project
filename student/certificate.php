@@ -30,7 +30,7 @@ $completed_quizzes = mysqli_fetch_assoc(mysqli_query($conn, "
   WHERE q.course_id=$course_id AND qa.student_id=$student_id
 "))['c'];
 
-// Overall average % across graded assignments + quiz attempts
+
 $avg_row = mysqli_fetch_assoc(mysqli_query($conn, "
   SELECT
     (SELECT AVG(s.marks_obtained / a.max_marks) FROM submissions s

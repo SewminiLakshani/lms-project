@@ -1,6 +1,3 @@
-// =====================================================
-// EduLMS - Global JS
-// =====================================================
 
 // Confirm before delete actions
 document.addEventListener('click', function (e) {
@@ -25,10 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// -----------------------------------------------------
 // Quiz countdown timer
 // Usage: startQuizTimer(minutes, 'timer-display-id', 'quiz-form-id')
-// -----------------------------------------------------
 function startQuizTimer(minutes, displayId, formId) {
   let totalSeconds = minutes * 60;
   const display = document.getElementById(displayId);

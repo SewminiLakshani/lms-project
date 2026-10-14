@@ -1,6 +1,4 @@
 <?php
-// Included by admin/profile.php, lecturer/profile.php, student/profile.php
-// Expects: $conn, session already started, role already checked
 
 $message = "";
 $user_id = $_SESSION['user_id'];

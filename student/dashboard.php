@@ -54,7 +54,7 @@ while ($row = mysqli_fetch_assoc($assignment_marks_result)) {
     $assignment_pct[] = $row['max_marks'] > 0 ? round(($row['marks_obtained'] / $row['max_marks']) * 100, 1) : 0;
 }
 
-// Quiz scores (as %)
+// Quiz scores ( %)
 $quiz_scores_result = mysqli_query($conn, "
   SELECT q.title, qa.score, q.total_marks FROM quiz_attempts qa
   JOIN quizzes q ON qa.quiz_id = q.quiz_id

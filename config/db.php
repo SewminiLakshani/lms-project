@@ -1,8 +1,4 @@
 <?php
-// =====================================================
-// Database Connection
-// Change these settings to match your XAMPP/WAMP setup
-// =====================================================
 $db_host = "localhost:3308";
 $db_user = "root";
 $db_pass = "";

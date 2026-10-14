@@ -1,14 +1,9 @@
--- =====================================================
--- LMS Database Schema
--- HNDIT Final Year Project
--- =====================================================
-
 CREATE DATABASE IF NOT EXISTS lms_db;
 USE lms_db;
 
--- -----------------------------------------------------
+
 -- USERS TABLE (Admin, Lecturer, Student)
--- -----------------------------------------------------
+
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
@@ -21,9 +16,8 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- -----------------------------------------------------
+
 -- COURSES TABLE
--- -----------------------------------------------------
 CREATE TABLE courses (
     course_id INT AUTO_INCREMENT PRIMARY KEY,
     course_name VARCHAR(150) NOT NULL,
@@ -37,9 +31,9 @@ CREATE TABLE courses (
     FOREIGN KEY (lecturer_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
--- -----------------------------------------------------
+
 -- ENROLLMENTS TABLE (Student <-> Course)
--- -----------------------------------------------------
+
 CREATE TABLE enrollments (
     enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
     student_id INT NOT NULL,
@@ -50,9 +44,8 @@ CREATE TABLE enrollments (
     UNIQUE KEY unique_enrollment (student_id, course_id)
 );
 
--- -----------------------------------------------------
+
 -- COURSE MATERIALS TABLE
--- -----------------------------------------------------
 CREATE TABLE materials (
     material_id INT AUTO_INCREMENT PRIMARY KEY,
     course_id INT NOT NULL,
@@ -63,9 +56,7 @@ CREATE TABLE materials (
     FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE
 );
 
--- -----------------------------------------------------
 -- ASSIGNMENTS TABLE
--- -----------------------------------------------------
 CREATE TABLE assignments (
     assignment_id INT AUTO_INCREMENT PRIMARY KEY,
     course_id INT NOT NULL,
@@ -77,9 +68,7 @@ CREATE TABLE assignments (
     FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE
 );
 
--- -----------------------------------------------------
 -- ASSIGNMENT SUBMISSIONS TABLE
--- -----------------------------------------------------
 CREATE TABLE submissions (
     submission_id INT AUTO_INCREMENT PRIMARY KEY,
     assignment_id INT NOT NULL,
@@ -94,9 +83,9 @@ CREATE TABLE submissions (
     UNIQUE KEY unique_submission (assignment_id, student_id)
 );
 
--- -----------------------------------------------------
+
 -- QUIZZES TABLE
--- -----------------------------------------------------
+
 CREATE TABLE quizzes (
     quiz_id INT AUTO_INCREMENT PRIMARY KEY,
     course_id INT NOT NULL,
@@ -107,9 +96,7 @@ CREATE TABLE quizzes (
     FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE
 );
 
--- -----------------------------------------------------
 -- QUIZ QUESTIONS TABLE
--- -----------------------------------------------------
 CREATE TABLE quiz_questions (
     question_id INT AUTO_INCREMENT PRIMARY KEY,
     quiz_id INT NOT NULL,
@@ -123,9 +110,8 @@ CREATE TABLE quiz_questions (
     FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id) ON DELETE CASCADE
 );
 
--- -----------------------------------------------------
+
 -- QUIZ ATTEMPTS TABLE (student results)
--- -----------------------------------------------------
 CREATE TABLE quiz_attempts (
     attempt_id INT AUTO_INCREMENT PRIMARY KEY,
     quiz_id INT NOT NULL,
@@ -136,9 +122,8 @@ CREATE TABLE quiz_attempts (
     FOREIGN KEY (student_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
--- -----------------------------------------------------
+
 -- QUIZ ANSWERS TABLE (each answer per attempt)
--- -----------------------------------------------------
 CREATE TABLE quiz_answers (
     answer_id INT AUTO_INCREMENT PRIMARY KEY,
     attempt_id INT NOT NULL,
@@ -149,9 +134,9 @@ CREATE TABLE quiz_answers (
     FOREIGN KEY (question_id) REFERENCES quiz_questions(question_id) ON DELETE CASCADE
 );
 
--- -----------------------------------------------------
+
 -- ANNOUNCEMENTS TABLE
--- -----------------------------------------------------
+
 CREATE TABLE announcements (
     announcement_id INT AUTO_INCREMENT PRIMARY KEY,
     course_id INT DEFAULT NULL, -- NULL = global announcement (admin)
@@ -163,9 +148,8 @@ CREATE TABLE announcements (
     FOREIGN KEY (posted_by) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
--- -----------------------------------------------------
 -- ATTENDANCE TABLE
--- -----------------------------------------------------
+
 CREATE TABLE attendance (
     attendance_id INT AUTO_INCREMENT PRIMARY KEY,
     course_id INT NOT NULL,
@@ -179,9 +163,3 @@ CREATE TABLE attendance (
     UNIQUE KEY unique_attendance (course_id, student_id, attendance_date)
 );
 
--- -----------------------------------------------------
--- NOTE: Default admin account is NOT inserted here because
--- passwords must be hashed with PHP's password_hash() function.
--- After importing this file, open create_admin.php in your browser
--- ONCE to create the default admin account, then delete that file.
--- -----------------------------------------------------

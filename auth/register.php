@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
-    $role = $_POST['role']; // student or lecturer only (admin created separately)
+    $role = $_POST['role']; 
 
     if ($full_name === "" || $email === "" || $password === "") {
         $error = "Please fill in all fields.";
