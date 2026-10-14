@@ -19,7 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Passwords do not match.";
     } elseif (strlen($password) < 6) {
         $error = "Password must be at least 6 characters.";
-    } elseif (!in_array($role, ['student', 'lecturer'])) {
+    // • හැකර් කෙනෙකුට පුළුවන් Browser එකේ Inspect Element (F12) ගිහින් HTML Select box එකේ අගය වෙනස් කරලා 'admin' කියලා සිස්ටම් එකට එවන්න. අන්න ඒ වගේ Form Tampering ප්‍රහාර වලින් බේරෙන්න මම PHP පැත්තෙන් in_array දාලා චෙක් කලා එන Role එක 'student' හෝ 'lecturer' විතරමයි නේද කියලා."
+    } elseif (!in_array($role, ['student', 'lecturer'])) { 
         $error = "Invalid role selected.";
     } else {
         // Check duplicate email

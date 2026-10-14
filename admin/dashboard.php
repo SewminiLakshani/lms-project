@@ -97,7 +97,13 @@ include '../includes/header.php';
       <h5 class="mb-3">Recently Registered Users</h5>
       <div class="table-responsive">
         <table class="table table-hover align-middle">
-          <thead class="table-dark"><tr><th>Name</th><th>Role</th><th>Joined</th></tr></thead>
+          <thead class="table-dark">
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Joined</th>
+            </tr>
+          </thead>
           <tbody>
             <?php while ($u = mysqli_fetch_assoc($recent_users)): ?>
             <tr>

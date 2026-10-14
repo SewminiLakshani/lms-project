@@ -1,3 +1,4 @@
+<!-- MySqliProcedural) -->
 <?php
 
 $message = "";

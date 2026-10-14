@@ -7,6 +7,7 @@ $message = "";
 
 // Delete user
 if (isset($_GET['delete'])) {
+  // interval- onema agayan->integer
     $id = intval($_GET['delete']);
     if ($id !== $_SESSION['user_id']) { // can't delete self
         mysqli_query($conn, "DELETE FROM users WHERE user_id = $id");
@@ -40,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_user'])) {
         $message = "Error: Email may already exist.";
     }
 }
-
+//Filter roles
 $filter = isset($_GET['role']) ? $_GET['role'] : 'all';
 $sql = "SELECT * FROM users";
 if (in_array($filter, ['admin', 'lecturer', 'student'])) {

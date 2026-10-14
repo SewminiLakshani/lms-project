@@ -11,7 +11,9 @@ $deadline = $_POST['deadline'];
 $max_marks = intval($_POST['max_marks'] ?: 100);
 
 $course = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM courses WHERE course_id=$course_id AND lecturer_id={$_SESSION['user_id']}"));
-if (!$course) { die("Unauthorized."); }
+if (!$course) { 
+  die("Unauthorized."); 
+}
 
 if ($title !== "" && $deadline !== "") {
     $stmt = mysqli_prepare($conn, "INSERT INTO assignments (course_id, title, description, deadline, max_marks) VALUES (?, ?, ?, ?, ?)");

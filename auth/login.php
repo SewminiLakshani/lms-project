@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user['status'] === 'inactive') {
             $error = "Your account has been deactivated. Contact the admin.";
         } else {
+          // userge visthra session ekakata dagannawa
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['full_name'] = $user['full_name'];
             $_SESSION['email'] = $user['email'];
@@ -52,7 +53,8 @@ include '../includes/header.php';
       <p class="text-muted">Login to your EduLMS account</p>
     </div>
 
-    <?php if ($error): ?>
+    <?php if ($error): ?> 
+       <!-- XSS - Cross-Site Scripting Attack walin berenawa -->
       <div class="alert alert-danger auto-alert"><?php echo htmlspecialchars($error); ?></div>
     <?php endif; ?>
 
